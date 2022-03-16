@@ -1,0 +1,175 @@
+if (document.location.hostname === "dlsu.instructure.com") {
+	window.eesyLaunchConfig = {
+		host: 'dlsu.eesysoft.com',
+		key: 'Dm85cS2f',
+		supportTab: true
+	};
+} else {
+	window.eesyLaunchConfig = {
+		host: 'dlsustaging.eesysoft.com',
+		key: 'cKXRZvAe',
+		supportTab: true
+	};
+};
+(function() {
+    var e = document.createElement('script');
+    e.src = '//' + window.eesyLaunchConfig.host + "/resources/js/canvas/launch.js?stmp=" + new Date().getTime();
+    e.src = '//' + window.eesyLaunchConfig.host + "/resources/js/canvas/launch.js";
+    e.async = true;
+    e.type = 'text/javascript';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(e, s);
+} ());
+
+$(document).on('click', "#help_tray a:contains('AnimoSpace Support')", function(event) {
+window.dispatchEvent(new Event('eesy_launchSupportTab'));
+event.preventDefault();
+}
+);
+(function () {
+  'use strict';
+  // Libraries trays
+  const LibraryTray = {
+    title: 'Libraries', // the menu item or tray name, what users will see
+    icon_svg: `<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="24.000000pt" height="24.000000pt" viewBox="0 0 24.000000 24.000000" preserveAspectRatio="xMidYMid meet">
+<metadata>
+Created by potrace 1.16, written by Peter Selinger 2001-2019
+</metadata>
+<g transform="translate(0.000000,24.000000) scale(0.022018,-0.025263)" fill="#00703" stroke="none">
+<path d="M430 510 l0 -340 100 0 100 0 0 340 0 340 -100 0 -100 0 0 -340z"/>
+<path d="M670 775 l0 -65 100 0 100 0 0 65 0 65 -100 0 -100 0 0 -65z"/>
+<path d="M670 455 l0 -215 100 0 100 0 0 215 0 215 -100 0 -100 0 0 -215z m130 75 c15 -15 20 -33 20 -75 0 -42 -5 -60 -20 -75 -11 -11 -24 -20 -30 -20 -5 0 -19 9 -30 20 -15 15 -20 33 -20 75 0 42 5 60 20 75 11 11 25 20 30 20 6 0 19 -9 30 -20z"/>
+<path d="M190 425 l0 -205 100 0 100 0 0 205 0 205 -100 0 -100 0 0 -205z"/>
+<path d="M670 140 c0 -47 -3 -60 -15 -60 -10 0 -15 10 -15 30 l0 30 -105 0 -105 0 0 -30 c0 -23 -4 -30 -20 -30 -16 0 -20 7 -20 30 l0 30 -100 0 -100 0 0 -30 c0 -20 -5 -30 -15 -30 -11 0 -15 12 -15 45 0 45 0 45 -35 45 -35 0 -35 0 -35 -45 l0 -45 -45 0 -45 0 0 -40 0 -40 545 0 545 0 0 40 0 40 -55 0 -55 0 0 45 c0 45 0 45 -35 45 -35 0 -35 0 -35 -45 0 -38 -3 -45 -20 -45 -18 0 -20 7 -20 60 l0 60 -100 0 -100 0 0 -60z"/>
+</g>
+</svg>`,
+    trayLinks: [{
+        href: 'https://www.dlsu.edu.ph/library/',
+        title: 'Libraries',
+        desc: 'Your library website'
+      },
+      {
+        href: 'https://animosearch.dlsu.edu.ph/',
+        title: 'AnimoSearch',
+        desc: 'Your one-stop search for ALL resources'
+      },
+      {
+        href: 'https://animosearch-is.dlsu.edu.ph/',
+        title: 'AnimoSearch-IS',
+        desc: 'Your one-stop search for Integrated School resources'
+      },
+      {
+        href: 'https://animorepository.dlsu.edu.ph/',
+        title: 'Animo Repository',
+        desc: "Your access to DLSU's scholarly works"
+      }
+      
+    ],
+    footer: ''
+  }
+  // leave this alone
+   const globalNavCustomTray=t=>{const n=t.title.replace(/\W/g,"_").toLowerCase(),s=`global_nav_${n}_tray`,i="ic-app-header__menu-list-item",e=`${i}--active`;var a=`<span id="${s}" style="display: none;">\n    <span class="global-nav-custom-tray gnct-easing">\n    <span role="region" aria-label="Global navigation tray" class="Global-navigation-tray">\n\n    <span class="gcnt-tray-close-wrapper">\n    <button id="${s}_close" type="button" role="button" tabindex="0" class="gcnt-tray-close-btn" style="margin:0px;">\n    <span class="gcnt-tray-close-svg-wrapper">\n    <svg name="IconXSolid" viewBox="0 0 1920 1920" style="fill:currentColor;width:1em;height:1em;" width="1em" height="1em" aria-hidden="true" role="presentation" disabled="true">\n    <g role="presentation"><svg version="1.1" viewBox="0 0 1920 1920">\n    <path d="M1743.858.012L959.869 783.877 176.005.012 0 176.142l783.74 783.989L0 1743.87 176.005 1920l783.864-783.74L1743.858 1920l176.13-176.13-783.865-783.74 783.865-783.988z" stroke="none" stroke-width="1"></path>\n    </svg></g></svg><span class="gcnt-tray-close-txt">Close</span></span></button></span>\n\n    <div class="tray-with-space-for-global-nav">\n    <div id="custom_${n}_tray" class="gnct-content-wrap">\n    <h1 class="gcnt-tray-h1">${t.title}</h1><hr role="presentation"/>\n\n    <ul class="gcnt-list">`;t.trayLinks.forEach((function(t){a+=`<li class="gcnt-list-item">\n        <span class="gcnt-list-link-wrapper">\n        <a target="_blank" rel="noopener" class="gcnt-list-link" href="${t.href}" role="button" tabindex="0">${t.title}</a>\n        </span>`,a+=t.desc&&t.desc.length>1?`<div class="gcnt-link-desc">${t.desc}</div>`:"",a+="</li>"})),a+=t.footer.length>1?`<li class="gcnt-list-item"><hr role="presentation"/></li><li class="gcnt-list-item">${t.footer}</li>`:"",a+="</ul></div></div></span></span></span>";var l=$("#main"),o=$("#menu"),c=$("<li>",{id:`global_nav_${n}_menu`,class:`${i} rc-gnct`,html:`<a id="global_nav_${n}_link" role="button" href="javascript:void(0)" class="ic-app-header__menu-list-link">\n        <div class="menu-item-icon-container" role="presentation"><span class="svg-${n}-holder"></span></div>\n        <div class="menu-item__text">${t.title}</div></a>`});
+if(1==/^icon-[a-z]/.test(t.icon_svg))c.find(`.svg-${n}-holder`).append($("<div>",{id:`global_nav_${n}_svg`,class:"menu-item-icon-container",html:`<i class="icon-line ${t.icon_svg} gnct_inst_menu_icon"></i></div>`,role:"presentation"})
+);
+else if(/^<svg/.test(t.icon_svg)){c.find(`.svg-${n}-holder`).append($(t.icon_svg));let s=c.find(`.svg-${n}-holder`).find("svg")[0],i=`global_nav_${n}_svg`;s.setAttribute("id",i),s.setAttribute("class","ic-icon-svg menu-item__icon ic-icon-svg--apps svg-icon-help ic-icon-svg-custom-tray"),"object"==typeof t.svg_size&&(s.setAttribute("height",t.svg_size.height),s.setAttribute("width",t.svg_size.width))}function r(){o.find("a").each((function(){this.onmouseup=this.blur()})),a.find(".gnct-easing").animate({left:"-200px",opacity:.8},300,"linear",(function(){a.hide(),c.removeClass(e)}))}o.append(c),l.append(a),c=$(`#global_nav_${n}_menu`),a=$(`#${s}`),c.click((function(){$(this).hasClass(e)?r():($(".rc-gnct").not(c).click((function(){r()})),o.find("a").each((function(){this.onmouseup=this.blur()})),a.show(),a.find(".gnct-easing").animate({left:"0px",opacity:1},300,"linear",(function(){$(`.${i}`).removeClass(e),c.addClass(e)})))})),$(`.${i}`).not(c).click((function(){r()})),$(`#${s}_close`).click((function(){r()}))
+};
+ 
+globalNavCustomTray(LibraryTray);
+})();
+
+(function () {
+  'use strict';
+
+  // USG link to Menu
+  const links = [
+    {
+      title: 'USG',
+      // example, instructure-ui pin.svg from above
+      icon_svg: `<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="412.000000pt" height="510.000000pt" viewBox="0 0 412.000000 510.000000" preserveAspectRatio="xMidYMid meet">
+<metadata>
+Created by potrace 1.16, written by Peter Selinger 2001-2019
+</metadata>
+<g transform="translate(0.000000,510.000000) scale(0.100000,-0.100000)" fill="#00703" stroke="none">
+<path d="M1902 4980 c-149 -21 -251 -79 -308 -176 -47 -80 -49 -211 -4 -275 54 -75 151 -105 369 -114 195 -7 247 -20 257 -60 17 -68 -28 -95 -169 -102 -118 -6 -215 13 -368 72 -51 19 -93 34 -94 33 -8 -9 -96 -191 -93 -193 12 -10 83 -41 137 -60 l64 -23 51 41 c97 76 211 112 334 105 84 -6 174 -34 233 -73 l38 -25 31 33 c50 54 65 94 64 177 -1 191 -139 278 -444 280 -121 1 -180 12 -201 39 -25 30 -13 57 36 81 102 49 292 32 475 -44 11 -4 24 16 53 87 20 50 37 97 37 103 0 16 -109 60 -190 79 -86 19 -229 26 -308 15z"/>
+<path d="M2975 4979 c-192 -29 -326 -118 -401 -265 l-39 -77 0 -127 c0 -126 0 -126 38 -202 81 -164 239 -257 465 -275 121 -9 217 11 360 74 8 3 12 -6 12 -30 l0 -35 108 3 c59 1 113 3 120 4 9 1 12 58 12 251 l0 250 -270 0 -270 0 0 -105 0 -105 117 0 116 0 -23 -25 c-41 -44 -122 -67 -235 -68 -217 -1 -304 66 -313 239 -7 139 35 219 138 261 36 14 72 18 185 18 150 0 203 -12 294 -61 l44 -24 51 39 c28 22 67 53 85 69 l35 29 -50 36 c-61 46 -176 94 -263 112 -90 19 -243 26 -316 14z"/>
+<path d="M456 4954 c-9 -24 -7 -366 4 -474 11 -123 31 -184 83 -262 74 -110 189 -171 349 -184 211 -18 395 76 473 242 44 94 55 181 55 450 l0 244 -120 0 -120 0 0 -257 c0 -295 -9 -351 -67 -409 -79 -79 -285 -75 -360 7 -50 55 -56 94 -61 387 l-4 272 -113 0 c-94 0 -114 -3 -119 -16z"/>
+<path d="M1933 4116 c-66 -21 -124 -60 -176 -115 -168 -179 -157 -467 23 -634 85 -79 147 -102 275 -102 94 0 104 2 167 34 318 159 319 630 2 792 -59 29 -77 34 -158 36 -57 2 -107 -2 -133 -11z"/>
+<path d="M1039 3797 c-236 -67 -347 -346 -228 -578 40 -79 146 -162 234 -183 56 -14 151 -7 209 14 73 28 163 110 199 183 98 201 14 455 -180 544 -64 29 -169 38 -234 20z"/>
+<path d="M2889 3796 c-177 -47 -292 -223 -276 -418 18 -215 207 -375 410 -347 78 10 139 40 201 99 137 129 160 347 56 510 -48 73 -115 124 -199 150 -71 23 -125 24 -192 6z"/>
+<path d="M1698 3252 c-67 -33 -158 -123 -192 -190 -49 -96 -56 -147 -56 -394 l0 -228 -46 0 -45 0 3 270 c2 149 2 270 0 270 -2 0 -17 -7 -35 -17 -83 -43 -224 -55 -325 -29 -28 8 -81 30 -115 49 l-64 35 -58 -32 c-114 -61 -207 -186 -234 -314 -6 -29 -11 -93 -11 -141 l0 -89 -117 -4 c-132 -4 -172 -18 -229 -80 -68 -72 -69 -75 -69 -368 0 -253 1 -267 22 -306 27 -50 75 -98 122 -121 28 -14 69 -18 193 -21 l158 -4 0 -413 0 -412 -32 -7 c-39 -8 -94 -49 -112 -84 -21 -41 -96 -306 -96 -338 0 -49 38 -112 84 -139 l43 -25 1557 0 c1285 0 1562 2 1589 14 49 20 95 78 102 129 5 35 -2 73 -35 188 -24 79 -49 156 -56 171 -18 35 -73 76 -112 84 l-32 7 0 413 0 414 133 0 c92 0 150 5 186 16 61 18 123 69 154 128 21 39 22 53 22 306 0 252 -1 267 -21 305 -56 104 -121 137 -279 143 l-110 4 -3 107 c-2 119 -20 191 -63 268 -36 63 -121 142 -189 176 l-51 26 -47 -30 c-80 -51 -170 -72 -276 -67 -82 5 -115 13 -207 52 -15 6 -16 2 -8 -36 4 -24 8 -145 9 -270 l0 -228 -45 0 -45 0 0 213 c0 145 -5 233 -15 280 -28 135 -115 252 -235 316 l-59 32 -39 -26 c-143 -94 -338 -98 -499 -10 l-61 34 -54 -27z m2123 -993 l29 -31 0 -238 c0 -238 0 -239 -24 -267 l-24 -28 -745 -3 -744 -2 -38 -33 -37 -32 12 -43 13 -42 544 0 543 0 0 -400 0 -400 -1300 0 -1300 0 0 400 0 400 543 0 544 0 11 37 c13 42 5 62 -37 92 -29 21 -37 21 -766 21 l-737 0 -29 29 -29 29 0 242 0 242 29 29 29 29 1742 0 1742 0 29 -31z m-315 -1697 c16 -10 88 -266 81 -286 -6 -15 -134 -16 -1539 -14 -1486 3 -1533 4 -1536 22 -5 23 68 269 82 278 14 10 2898 10 2912 0z"/>
+<path d="M2022 1846 c-12 -41 -28 -76 -36 -79 -8 -3 -46 -5 -85 -4 -39 2 -71 0 -71 -3 0 -5 69 -56 123 -91 6 -4 -1 -37 -17 -85 -14 -42 -24 -79 -22 -81 2 -2 31 17 65 42 33 25 66 45 71 45 6 0 38 -20 72 -45 34 -25 63 -43 65 -42 2 2 -8 37 -22 77 -14 40 -25 76 -25 79 0 3 29 26 65 51 36 25 65 47 65 50 0 3 -37 5 -82 5 l-83 0 -25 78 c-13 42 -27 77 -31 77 -3 0 -16 -33 -27 -74z"/>
+</g>
+</svg>`,
+      href: 'https://sites.google.com/dlsu.edu.ph/usg-sshub/home?authuser=0',
+      target: '_blank'
+    }
+  ];
+
+  // leave this alone
+  const globalNavCustomLinks = (links) => {
+
+    let gnci_svg = (svg, tidle) => {
+      svg.setAttribute('id', `global_nav_${tidle}_svg`);
+      svg.setAttribute('class', 'ic-icon-svg menu-item__icon ic-icon-svg--apps svg-icon-help ic-icon-svg-custom-tray');
+      if (svg.getAttribute('height') > '26px') {
+        svg.removeAttribute('height')
+      }
+      if (svg.getAttribute('width') > '26px') {
+        svg.removeAttribute('width')
+      }
+    }
+
+    links.forEach(link => {
+      // selector id from link title
+      const tidle = link.title.replace(/\W/g, '_').toLowerCase();
+      // global nav icon
+      var icon = $('<li>', {
+        id: `global_nav_${tidle}_link`,
+        class: `ic-app-header__menu-list-item`,
+        html: `<a id="global_nav_${tidle}_link" role="button" href="${link.href}" target="${link.target}" class="ic-app-header__menu-list-link">
+            <div class="menu-item-icon-container" role="presentation"><span class="svg-${tidle}-holder"></span></div>
+            <div class="menu-item__text">${link.title}</div></a>`
+      });
+      // instructure icon
+      if (/^icon-[a-z]/.test(link.icon_svg) == true) {
+
+        icon.find(`.svg-${tidle}-holder`).append($('<div>', {
+          id: `global_nav_${tidle}_svg`,
+          class: 'menu-item-icon-container',
+          html: `<i class="icon-line ${link.icon_svg} gnct_inst_menu_icon"></i></div>`,
+          role: 'presentation'
+        }));
+
+        // inline/script svg
+      } else if (/^<svg/.test(link.icon_svg)) {
+
+        icon.find(`.svg-${tidle}-holder`).append($(link.icon_svg))
+        let svg = icon.find(`.svg-${tidle}-holder`).find('svg')[0];
+        gnci_svg(svg, tidle);
+      }
+      $("#menu li:eq(7)").after(icon);
+    });
+  }
+
+  // handle css, remove or comment if you're also using Global Nav Custom Tray
+  (function () {
+    if (document.querySelectorAll('[data-global-nav-custom-css="set"]').length == 0) {
+      let styles = {
+        'i.gnct_inst_menu_icon:before': 'font-size: 26px; width: 26px; line-height: 26px;',
+        'i.gnct_inst_menu_icon': 'width: 26px; height: 26px;'
+      };
+      if (typeof styles !== 'undefined' && Object.keys(styles).length > 0) {
+        let style = document.createElement('style');
+        style.setAttribute('data-global-nav-custom-css', 'set');
+        document.head.appendChild(style);
+        let sheet = style.sheet;
+        Object.keys(styles).forEach(function (key) {
+          sheet.insertRule(`${key} { ${styles[key]} }`, sheet.cssRules.length);
+        });
+      }
+    }
+  })();
+
+  // add links to menu
+  globalNavCustomLinks(links);
+})();
